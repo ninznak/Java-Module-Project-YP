@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -8,6 +6,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String goodName;
         int peopleCount = 0;
+        String[] rightEndsForRuble = {"ля","лей", "ль"};
 
         System.out.println("Привет!\nНа скольких человек будем делить счёт?" +
                            " \n\uD83D\uDC49 введи значение: ");
@@ -44,8 +43,16 @@ public class Main {
 
         System.out.println("Добавленные товары: ");
         for (String good : calculator.storage) {
-            System.out.println(good);
+            System.out.println(" ** " + good + " ** ");
         }
-        System.out.printf("Каждый человек должен заплатить %.2f", calculator.getPersonalPrice());
+
+        switch ((int) calculator.getPersonalPrice() / 10) {
+            case 1 -> System.out.printf("Каждый человек должен заплатить %.2f руб%s",
+                    calculator.getPersonalPrice(), rightEndsForRuble[2]);
+            case 2, 3, 4 -> System.out.printf("Каждый человек должен заплатить %.2f руб%s",
+                    calculator.getPersonalPrice(), rightEndsForRuble[0]);
+            default -> System.out.printf("Каждый человек должен заплатить %.2f руб%s",
+                    calculator.getPersonalPrice(), rightEndsForRuble[1]);
+        }
     }
 }
