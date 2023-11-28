@@ -14,7 +14,6 @@ class Calculator {
         moneySum += singlePrice;
     }
 
-
     public double getPersonalPrice() {
         return moneySum / peopleCount;
     }
