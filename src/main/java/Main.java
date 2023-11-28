@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -5,26 +6,31 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         String goodName;
-        int peopleCount = 0;
-        String[] rightEndsForRuble = {"ля","лей", "ль"};
+        int peopleCount;
+        String[] rightEndsForRuble = {"ля", "лей", "ль"};
 
         System.out.println("Привет!\nНа скольких человек будем делить счёт?" +
-                           " \n\uD83D\uDC49 введи значение: ");
+                " \n\uD83D\uDC49 введи значение: ");
 
-        while (peopleCount<=1){
-            peopleCount = sc.nextInt();
+        while (true) {
+            try {
+                peopleCount = sc.nextInt();
+                if (peopleCount > 1) break;
 
-            if (peopleCount<=1)
-                System.out.println("\uD83D\uDE20 Введите положительное число больше 1 ");
+            } catch (InputMismatchException e) {
+                System.out.println("Неверный формат ввода! Введите положительное число больше 1 ");
+                sc.nextLine();
+            }
+            System.out.println("\uD83D\uDE20 Введите положительное число больше 1 ");
         }
 
         Calculator calculator = new Calculator(peopleCount);
 
-        while (true){
+        while (true) {
             System.out.println("Введите название товара: ");
 
             goodName = sc.next();
-            if (goodName.equalsIgnoreCase("завершить")){
+            if (goodName.equalsIgnoreCase("завершить")) {
                 break;
             }
             calculator.storage.add(goodName);

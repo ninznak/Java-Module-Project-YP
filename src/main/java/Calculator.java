@@ -10,12 +10,13 @@ class Calculator {
         this.peopleCount = peopleCount;
     }
 
-    public void addPrice(double singlePrice){
+    public void addPrice(double singlePrice) {
         moneySum += singlePrice;
     }
 
-    public double getPersonalPrice(){
-        return moneySum/peopleCount;
+
+    public double getPersonalPrice() {
+        return moneySum / peopleCount;
     }
 
     public double getMoneySum() {
