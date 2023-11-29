@@ -27,24 +27,32 @@ public class Main {
 
         while (true) {
             System.out.println("Введите название товара: ");
-
             goodName = sc.next();
+
             if (goodName.equalsIgnoreCase("завершить")) {
                 break;
             }
+
+            while (true) {
+                try {
+                    System.out.println("Введите стоимость товара в формате XX.YY : ");
+                    double newPrice = Double.parseDouble(sc.next());
+                    if (newPrice <= 0) {
+                        System.out.println("Цена должна быть положительным числом!");
+                    } else {
+                        calculator.addPrice(newPrice);
+                        System.out.printf("Товар %s успешно добавлен\n", goodName);
+                        System.out.println("Общая сумма на данный момент: " + calculator.getMoneySum());
+                        break;
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Цена должна быть положительным числом!");
+                    sc.nextLine();
+                }
+            }
             calculator.storage.add(goodName);
-
-            System.out.println("Введите стоимость товара в формате XX.YY : ");
-            double newPrice = Double.parseDouble(sc.next());
-            calculator.addPrice(newPrice);
-
-            System.out.printf("Товар %s успешно добавлен\n", goodName);
-            System.out.println("Общая сумма на данный момент: " + calculator.getMoneySum());
-
             System.out.println("Вы хотите добавить ещё один товар? Если нет, введите - завершить");
         }
-
-        System.out.println(calculator.storage);
 
         System.out.println("Добавленные товары: ");
         for (String good : calculator.storage) {

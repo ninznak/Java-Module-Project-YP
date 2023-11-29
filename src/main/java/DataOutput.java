@@ -1,11 +1,9 @@
 public class DataOutput {
-
-
     public static void showMessage(double personalPrice) {
 
         String[] rightEndsForRuble = {"ля", "лей", "ль"};
 
-        if ((int) personalPrice%100 >= 10 && (int) personalPrice%100 <= 20) {
+        if ((int) personalPrice % 100 >= 10 && (int) personalPrice % 100 <= 20) {
             System.out.printf("Каждый человек должен заплатить %.2f руб%s",
                     personalPrice, rightEndsForRuble[1]);
         } else {
