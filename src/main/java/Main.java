@@ -42,7 +42,8 @@ public class Main {
                     } else {
                         calculator.addPrice(newPrice);
                         System.out.printf("Товар %s успешно добавлен\n", goodName);
-                        System.out.println("Общая сумма на данный момент: " + calculator.getMoneySum());
+                        System.out.println("Общая сумма на данный момент: "
+                                + calculator.getMoneySum());
                         break;
                     }
                 } catch (NumberFormatException e) {
